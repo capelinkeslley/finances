@@ -12,6 +12,9 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      screens: {
+        'xl': '1200px'
+      }
     },
   },
   plugins: [

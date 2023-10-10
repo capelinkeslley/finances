@@ -3,6 +3,8 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get 'home', to: 'home#leading_page'
+  
+  # Isso define a rota para a raiz do seu domínio [seu_dominio]/
+  root 'home#leading_page'
 end
