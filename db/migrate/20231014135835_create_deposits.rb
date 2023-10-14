@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
-class CreateFinancials < ActiveRecord::Migration[7.0]
+class CreateDeposits < ActiveRecord::Migration[7.0]
   def change
-    create_table :financials do |t|
-      t.decimal :value, precision: 10, scale: 2
+    create_table :deposits do |t|
+      t.decimal :value
+      t.datetime :date
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

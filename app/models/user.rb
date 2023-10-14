@@ -8,5 +8,6 @@ class User < ApplicationRecord
 
   validates :email, presence: true
 
-  has_many :financials, dependent: :destroy
+  has_one :financial, dependent: :destroy
+  has_many :deposits, dependent: :destroy
 end

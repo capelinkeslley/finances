@@ -8,6 +8,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'relationships' do
-    it { should have_many(:financials) }
+    it { should have_one(:financial) }
+    it { should have_many(:deposits) }
   end
 end

@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :financial do
-    value { 0.0 }
+  factory :deposit do
+    value { '9.99' }
+    date { 1.minute.ago }
     user { create(:user) }
   end
 end

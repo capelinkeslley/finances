@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class FinancialsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_financial, only: :show
 
   def index
-    @financials = current_user.financials
+    @financial = current_user.financial
   end
 
   def show; end
@@ -12,6 +13,6 @@ class FinancialsController < ApplicationController
   private
 
   def set_financial
-    @financial = current_user.financials.find(params[:id])
+    @financial = current_user.financial
   end
 end
