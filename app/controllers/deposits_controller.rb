@@ -19,9 +19,6 @@ class DepositsController < ApplicationController
     @deposit = Deposit.new
   end
 
-  # GET /deposits/1/edit
-  def edit; end
-
   # POST /deposits or /deposits.json
   def create
     @deposit = Deposit.new(deposit_params.merge(user_id: current_user.id))
@@ -32,19 +29,6 @@ class DepositsController < ApplicationController
         format.json { render :show, status: :created, location: @deposit }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @deposit.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /deposits/1 or /deposits/1.json
-  def update
-    respond_to do |format|
-      if @deposit.update(deposit_params)
-        format.html { redirect_to deposit_url(@deposit), notice: 'Deposit was successfully updated.' }
-        format.json { render :show, status: :ok, location: @deposit }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @deposit.errors, status: :unprocessable_entity }
       end
     end
