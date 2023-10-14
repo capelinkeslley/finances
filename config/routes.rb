@@ -11,7 +11,8 @@ Rails.application.routes.draw do
     root 'financials#index', as: :authenticated_root
   end
 
-  resources :deposits
+  resources :deposits, except: %i[edit update]
+  resources :outflows, except: %i[edit update]
   resources :financials, only: %i[index show]
 
   unauthenticated do

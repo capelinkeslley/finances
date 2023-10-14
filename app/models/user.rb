@@ -10,4 +10,5 @@ class User < ApplicationRecord
 
   has_one :financial, dependent: :destroy
   has_many :deposits, dependent: :destroy
+  has_many :outflows, dependent: :destroy
 end

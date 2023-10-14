@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_14_135835) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_14_191900) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_14_135835) do
     t.index ["user_id"], name: "index_financials_on_user_id"
   end
 
+  create_table "outflows", force: :cascade do |t|
+    t.decimal "value"
+    t.bigint "user_id", null: false
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_outflows_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -45,4 +54,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_14_135835) do
 
   add_foreign_key "deposits", "users"
   add_foreign_key "financials", "users"
+  add_foreign_key "outflows", "users"
 end

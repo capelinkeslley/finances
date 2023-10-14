@@ -75,7 +75,6 @@ RSpec.describe '/deposits', type: :request do
       it 'creates a new Financial' do
         expect do
           post deposits_url, params: { deposit: invalid_attributes }
-
         end.to change(Financial, :count).by(1)
       end
     end

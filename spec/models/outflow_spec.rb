@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Deposit, type: :model do
+RSpec.describe Outflow, type: :model do
   describe 'relationships' do
     it { should belong_to(:user) }
     it { should have_one(:financial).through(:user) }

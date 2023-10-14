@@ -2,8 +2,7 @@
 
 class DepositsController < ApplicationController
   before_action :authenticate_user!
-
-  before_action :set_deposit, only: %i[show edit update destroy]
+  before_action :set_deposit, only: %i[show destroy]
   before_action :set_financial, only: %i[create destroy]
 
   # GET /deposits or /deposits.json
