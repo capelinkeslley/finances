@@ -4,11 +4,11 @@ class DepositsController < ApplicationController
   before_action :authenticate_user!
 
   before_action :set_deposit, only: %i[show edit update destroy]
-  before_action :set_financial, only: %i[create]
+  before_action :set_financial, only: %i[create destroy]
 
   # GET /deposits or /deposits.json
   def index
-    @deposits = Deposit.all
+    @deposits = current_user.deposits
   end
 
   # GET /deposits/1 or /deposits/1.json
@@ -36,7 +36,11 @@ class DepositsController < ApplicationController
 
   # DELETE /deposits/1 or /deposits/1.json
   def destroy
+    value = @deposit.value
+
     @deposit.destroy
+
+    @financial.update!(value: @financial.value - value)
 
     respond_to do |format|
       format.html { redirect_to deposits_url, notice: 'Deposit was successfully destroyed.' }
@@ -48,7 +52,7 @@ class DepositsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_deposit
-    @deposit = Deposit.find(params[:id])
+    @deposit = current_user.deposits.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

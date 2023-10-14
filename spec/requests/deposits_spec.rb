@@ -92,5 +92,13 @@ RSpec.describe '/deposits', type: :request do
       delete deposit_url(deposit)
       expect(response).to redirect_to(deposits_url)
     end
+
+    it 'update financial value for 0' do
+      delete deposit_url(deposit)
+
+      user.reload
+
+      expect(user.financial.value).to eq(0)
+    end
   end
 end
