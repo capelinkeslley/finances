@@ -1,0 +1,21 @@
+<div id="<%= dom_id financial %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Month:</strong>
+    <%= financial.month %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Year:</strong>
+    <%= financial.year %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Value:</strong>
+    <%= financial.value %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this financial", financial, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

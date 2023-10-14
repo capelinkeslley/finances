@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   }
 
   authenticated :user do
-    root 'home#leading_page', as: :authenticated_root
+    root 'financials#index', as: :authenticated_root
   end
+
+  resources :financials, only: %i[index show]
 
   unauthenticated do
     root to: 'devise/sessions#new', as: :unauthenticated_root
